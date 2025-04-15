@@ -14,9 +14,15 @@ public class Bomb extends Actor
      */
     public void act()
     {
-        move(-3);
+        move(-10);
         if(getX() <= 0) {
             resetBomb();
+        }
+        if(isTouching(Hero.class)) {
+            Skull skull = new Skull();
+            getWorld().addObject(skull, 300, 200);
+            getWorld().removeObject(this);
+            
         }
     }
     public void resetBomb() {
